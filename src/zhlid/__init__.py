@@ -1,0 +1,1 @@
+from src.zhlid.model import load_model
