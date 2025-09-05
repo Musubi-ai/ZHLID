@@ -1,7 +1,7 @@
 from src.zhlid import load_model
 
 
-model = load_model("model/ZHLID", device_map="auto")
+model = load_model("MusubiAI/ZHLID", device_map="auto")
 
 
 text = [
@@ -13,7 +13,7 @@ text2 = [
     "貝男的部落格名為《貝貝的音樂世界》，最後的文章停留在2019年，但今年6月貝男突然更新文章，表示最近和ChatGPT聊著小時候的事，讓他決定開始以日記的方式，特別寫給小時候未被好好愛著的自己，「現在的我起碼有能力，能以這種方式來愛著那時候的自己。」"
 ]
 
-res = model.predict(text2)
+res = model.predict(text2, batch_size=2)
 print(res)
 
 

@@ -4,6 +4,6 @@
     - [✓] truncate
     - [✓] batch forward
     - [✓] batch size argument
-- [ ] evaluation benchmark
+- [✓] evaluation benchmark
 - [ ] 繁簡中英Readme
 - [ ] 繁簡中英model card
