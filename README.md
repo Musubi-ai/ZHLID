@@ -67,7 +67,7 @@ python evaluate.py
 
 We compare our top-1 accuracy result with [GlotLID](https://github.com/cisnlp/GlotLID/tree/main) and [langdetect](https://github.com/Mimino666/langdetect). Note that since GlotLID only provides a general "cmn_Hani" label for Chinese, its performance on Traditional and Simplified Chinese is measured by whether it outputs this label for both categories.
 
-| Top-1 acc | Traditional Chinese | Simplified Chinese | Classical Chinese (Traditional) | Classical Chinese (Simplified) | Cantonese |
+| Top-1 accuracy | Traditional Chinese | Simplified Chinese | Classical Chinese (Traditional) | Classical Chinese (Simplified) | Cantonese |
 |------|:----:|:----:|:----:|:----:|:----:|
 | ZHLID (ours) | 1.0 | 1.0 | 0.9 | 1.0 | 0.96 |
 | [GlotLID](https://github.com/cisnlp/GlotLID/tree/main) | 0.98 | 0.98 | - | - | 0.9 |
