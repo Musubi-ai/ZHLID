@@ -1,1 +1,1 @@
-from src.zhlid.model import load_model
+from zhlid.model import load_model
