@@ -12,3 +12,6 @@ wheels/
 model
 
 test.py
+
+# For building
+dist

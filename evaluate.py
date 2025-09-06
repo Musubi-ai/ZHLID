@@ -5,8 +5,8 @@ from pathlib import Path
 from src.zhlid import load_model
 
 
-folder = "evaluation/eval_data"
-save_path = "evaluation/res/eval_results.jsonl"
+folder = "benchmark/eval_data"
+save_path = "benchmark/res/ZHLID_eval_results.jsonl"
 model = load_model("MusubiAI/ZHLID", device_map="auto")
 files = Path(folder).glob("*.jsonl")
 
@@ -36,5 +36,3 @@ for file in files:
     data = {"lang": file.stem, "accuracy": acc}
     with open(save_path, "a+", encoding="utf-8") as f:
         f.write(json.dumps(data, ensure_ascii=False) + "\n")
-        
-        

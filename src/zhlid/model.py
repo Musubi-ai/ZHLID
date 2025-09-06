@@ -61,7 +61,7 @@ class Model:
             for score, idx in zip(pred_scores, pred_indices):
                 score = round(score, 10)
                 label = id2label[idx]
-                res_dict = {"label": label, "score": score}
+                res_dict = {"label": label, "confidence_score": score}
                 res.append(res_dict)
 
         return res
