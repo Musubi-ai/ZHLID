@@ -1,4 +1,4 @@
-# ZHLID: Fine-grained Chinese Language Identification Package
+# ZHLID: 中文语言识别工具包
 <p align="center">
     <a href="https://huggingface.co/MusubiAI/ZHLID"><img alt="Model" src="https://img.shields.io/badge/🤗%20Model%20Page-zhlid-yellow"></a>
     <a href="https://github.com/Musubi-ai/Musubi/blob/main/LICENSE"><img alt="GitHub" src="https://img.shields.io/badge/license-Apache_2.0-blue"></a>
@@ -6,47 +6,46 @@
 
 </p>
 
-English | [简体中文](docs/README_zh-CN.md) | [繁體中文](docs/README_zh-TW.md)
+[English](../README.md) | 简体中文 | [繁體中文](docs/README_zh-TW.md)
 
-ZHLID is an open-source, model-based language identification tool specialized in fine-grained Chinese varieties.
+ZHLID 是一个开源的、基于模型的语言识别工具，专注于区分中文的变体。
 
-## Features
-Unlike general-purpose LID tools, ZHLID focuses on distinguishing between closely related Chinese varieties, including:
+## 功能特点
+与通用 LID 工具不同，ZHLID 聚焦于区分密切相关的中文变体，包括：
 
-**Traditional Chinese (繁體中文)** – written in the traditional character set, used in formal and classical texts.  
-**Simplified Chinese (簡體中文)** – written in the simplified character set, designed for easier reading and writing.  
-**Cantonese (粵語)** – written form reflecting spoken Cantonese with unique vocabulary and grammar.  
-**Classical Chinese (Traditional) (繁體文言文)** – literary Chinese in traditional characters with concise, classical syntax.  
-**Classical Chinese (Simplified) (簡體文言文)** – literary Chinese in simplified characters, used in modern reprints and education.
+**繁体中文 (Traditional Chinese)** – 使用繁体字书写，常见于正式和古典文本。  
+**简体中文 (Simplified Chinese)** – 使用简化字书写，便于阅读和书写。  
+**粤语 (Cantonese)** – 书面形式反映口语粤语，具有独特的词汇和语法。  
+**文言文（繁体） (Classical Chinese, Traditional)** – 使用繁体字的文言文，句式简练古雅。  
+**文言文（简体） (Classical Chinese, Simplified)** – 使用简体字的文言文，常见于现代重印本和教育领域。
 
-This makes ZHLID useful for linguistic research, corpus analysis, preprocessing for NLP tasks, or any application requiring accurate recognition of Chinese textual forms.
+这使得 ZHLID 在语言学研究、语料分析、NLP 任务的预处理，或任何需要精准识别中文文本形式的场景中都非常有用。
 
-The following table compares ZHLID with other popular LID tools supporting Chinese detection:
+以下表格比较了 ZHLID 与其他常见的中文检测工具：
 
-| Identification | General Chinese | Traditional Chinese | Simplified Chinese | Classical Chinese | Cantonese |
+| 识别能力 | 一般中文 | 繁体中文 | 简体中文 | 文言文 | 粤语 |
 |------|:----:|:----:|:----:|:----:|:----:|
 | ZHLID (ours) | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [langdetect](https://github.com/Mimino666/langdetect) | ✅ | ✅ | ✅ | ❌ | ❌ |
-| [GlotLID](https://github.com/cisnlp/GlotLID/tree/main) | ✅ | ❌ |❌ |❌ | ✅ |
+| [GlotLID](https://github.com/cisnlp/GlotLID/tree/main) | ✅ | ❌ | ❌ | ❌ | ✅ |
 | [langid.py](https://github.com/saffsd/langid.py) | ✅ | ❌ | ❌ | ❌ | ❌ |
 | [CLD3](https://github.com/google/cld3?tab=readme-ov-file#supported-languages) | ✅ | ❌ | ❌ | ❌ | ❌ |
 | [Lingua](https://github.com/pemistahl/lingua-py) | ✅ | ❌ | ❌ | ❌ | ❌ |
 
-## Installation
-### Install via pip
+## 安装
+### 使用 pip 安装
 ```bash
 pip install zhlid
 ```
 
-### Install from source
+### 从源码安装
 ```bash
 pip install git+https://github.com/Musubi-ai/ZHLID
 ```
 
-## Usage
+## 使用示例
 ```python
 from zhlid import load_model
-
 
 model = load_model("MusubiAI/ZHLID", device_map="auto")
 
@@ -68,22 +67,23 @@ print(res)
 #     {'label': 'zhtw', 'confidence_score': 0.9998573065}
 # ]
 ```
-## Evaluation
-To evaluate ZHLID with our benchmark dataset, simply run:
+
+## 评测
+要使用我们的基准数据集评测 ZHLID，只需运行：
 ```bash
 python evaluate.py
 ```
 
-We compare our top-1 accuracy result with [GlotLID](https://github.com/cisnlp/GlotLID/tree/main) and [langdetect](https://github.com/Mimino666/langdetect). Note that since GlotLID only provides a general "cmn_Hani" label for Chinese, its performance on Traditional and Simplified Chinese is measured by whether it outputs this label for both categories.
+我们将 top-1 准确率与 [GlotLID](https://github.com/cisnlp/GlotLID/tree/main) 和 [langdetect](https://github.com/Mimino666/langdetect) 进行比较。需要注意的是，由于 GlotLID 只提供一个通用的 “cmn_Hani” 标签，因此它在繁体和简体上的表现是通过是否同时输出该标签来衡量的。
 
-| Top-1 accuracy | Traditional Chinese | Simplified Chinese | Classical Chinese (Traditional) | Classical Chinese (Simplified) | Cantonese |
-|------|:----:|:----:|:----:|:----:|:----:|
-| ZHLID (ours) | 1.0 | 1.0 | 0.9 | 1.0 | 0.96 |
-| [GlotLID](https://github.com/cisnlp/GlotLID/tree/main) | 0.98 | 0.98 | - | - | 0.9 |
-| [langdetect](https://github.com/Mimino666/langdetect) | 0.3 | 0.9 | - | - | - |
+| Top-1 准确率                                              | 繁体中文 | 简体中文 | 文言文（繁体） | 文言文（简体） |  粤语  |
+| ------------------------------------------------------ | :--: | :--: | :-----: | :-----: | :--: |
+| ZHLID (ours)                                           |  1.0 |  1.0 |   0.9   |   1.0   | 0.96 |
+| [GlotLID](https://github.com/cisnlp/GlotLID/tree/main) | 0.98 | 0.98 |    -    |    -    |  0.9 |
+| [langdetect](https://github.com/Mimino666/langdetect)  |  0.3 |  0.9 |    -    |    -    |   -  |
 
-## Citation
-If you use ZHLID in your research, please cite this repository:
+## 引用
+如果你在研究中使用 ZHLID，请引用本项目：
 ```bibtex
 @misc{zhlid2025 ,
   title  = {ZHLID: Fine-grained Chinese Language Identification Package},
